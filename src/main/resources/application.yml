@@ -1,0 +1,52 @@
+server:
+  address: 0.0.0.0
+  port: 8080
+  max-http-header-size: 10240000
+  tomcat:
+    max-http-header-size: 10240000
+spring:
+  profiles:
+    active: dev
+  devtools:
+    restart:
+
+      additional-paths: resources/**,static/**,templates/**
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/naer?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    platform: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 1
+    minIdle: 3
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+
+    filters: stat,wall,slf4j
+
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
+mybatis:
+  type-aliases-package: com.sxbang.friday.model
+  mapper-locations: classpath:/mybatis-mappers/*
+  configuration:
+    mapUnderscoreToCamelCase: true
+
+#baseInfo
+#api-url: /api
+
+#token:
+#  expire:
+#    seconds: 7200
+#  jwtSecret: (XIAO:)_$^11244^%$_(WEI:)_@@++--(LAO:)_++++_.sds_(SHI:)
+

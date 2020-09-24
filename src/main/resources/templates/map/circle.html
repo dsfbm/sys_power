@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/js/echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 900px;height:700px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    myChart.showLoading();
+
+    var names=[];    //类别数组（实际用来盛放X轴坐标值）
+    var nums=[];    //销量数组（实际用来盛放Y坐标值）
+
+    $.ajax({
+        type : "get",
+        async : false,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+        url : "/vis/list",    //请求发送到TestServlet处
+        data : {},
+        dataType : "json",        //返回数据形式为json
+        success : function(result) {
+            //请求成功时执行该函数内容，result即为服务器返回的json对象
+            var data = result.data;
+            if (data) {
+                var max = 0;
+                for(var i=0;i<data.length;i++){
+                    if(data[i].sale > max){
+                        max = data[i].sale;
+                    }
+                }
+                for(var i=0;i<data.length;i++){
+                    names.push({name:data[i].username,max:max});    //挨个取出类别并填入类别数组
+                    nums.push(data[i].sale);    //挨个取出销量并填入销量数组
+                }
+                console.log(max,names,nums)
+                myChart.hideLoading();    //隐藏加载动画
+                myChart.setOption({        //加载数据图表
+                    backgroundColor: '#161627',
+                    title: {
+                        text: 'AQI - 雷达图',
+                        left: 'center',
+                        textStyle: {
+                            color: '#eee'
+                        }
+                    },
+                    legend: {
+                        bottom: 5,
+                        data: [],
+                        itemGap: 20,
+                        textStyle: {
+                            color: '#fff',
+                            fontSize: 14
+                        },
+                        selectedMode: 'single'
+                    },
+                    radar: {
+                        indicator:names ,
+                        shape: 'circle',
+                        splitNumber: 5,
+                        name: {
+                            textStyle: {
+                                color: 'rgb(238, 197, 102)'
+                            }
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: [
+                                    'rgba(238, 197, 102, 0.1)', 'rgba(238, 197, 102, 0.2)',
+                                    'rgba(238, 197, 102, 0.4)', 'rgba(238, 197, 102, 0.6)',
+                                    'rgba(238, 197, 102, 0.8)', 'rgba(238, 197, 102, 1)',
+                                ].reverse()
+                            }
+                        },
+                        splitArea: {
+                            show: false
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: 'rgba(238, 197, 102, 0.5)'
+                            }
+                        }
+                    },
+                    series: [
+                        {
+                            // name: '北京',
+                            type: 'radar',
+                            lineStyle:  {
+                                normal: {
+                                    width: 1,
+                                    opacity: 0.5
+                                }
+                            },
+                            data:[nums] ,
+                            symbol: 'none',
+                            itemStyle: {
+                                color: '#F9713C'
+                            },
+                            areaStyle: {
+                                opacity: 0.1
+                            }
+                        }
+                    ]
+                });
+
+            }
+
+        },
+        error : function() {
+            //请求失败时执行该函数
+            alert("图表请求数据失败!");
+            myChart.hideLoading();
+        }
+    })
+</script>
+</body>
+</html>
