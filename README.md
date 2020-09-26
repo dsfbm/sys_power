@@ -9,9 +9,9 @@
 # 项目地址
 http://39.101.195.158:8888/
 登录账号密码：
-管理员账号：admin  密码：admin
-普通用户账号：fbm  密码：123456 
-本人博客：
+# 管理员账号：admin  密码：admin
+# 普通用户账号：fbm  密码：123456 
+# 本人博客：
 http://www.dsfbm.top/  
 
 
@@ -19,17 +19,18 @@ http://www.dsfbm.top/
 
 
 ## 项目架构
-![image](image/QQ截图20200926170153.png)
+![image](image/QQ截图20200926175554.png)
 ## 登录页面
-![image](image/QQ截图20200926162910.png)
+![image](image/QQ截图20200926175658.png)
 ## 后台展示
-![image](/image/QQ截图20200926162931.png)
-![image](/image/QQ截图20200926162944.png)
-![image](/image/QQ截图20200926162959.png)
-![image](/image/QQ截图20200926163006.png)
-![image](/image/QQ截图20200926163132.png)
-![image](/image/QQ截图20200926163156.png)
-![image](/image/QQ截图20200926163214.png)
-![image](/image/QQ截图20200926163227.png)
+![image](/image/QQ截图20200926175753.png)
+![image](/image/QQ截图20200926175801.png)
+![image](/image/QQ截图20200926175814.png)
+![image](/image/QQ截图20200926175828.png)
+![image](/image/QQ截图20200926175850.png)
+![image](/image/QQ截图20200926175856.png)
+![image](/image/QQ截图20200926175916.png)
+![image](/image/QQ截图20200926175936.png)
+![image](/image/QQ截图20200926175949.png)
 
 
