@@ -70,10 +70,11 @@
                         ,{field: 'id', title: 'ID', align:'center', width:50}
                         ,{field: 'username', title: '用户名'}
                         ,{field: 'telephone', title: '手机'}
+                        ,{field: 'depatment', title: '部门'}
                         ,{field: 'status', title: '状态',  templet:function(d){
                             return  d.status == '1' ? "启动":"禁用";
                         }}
-                        ,{field: 'birthday', title: '生日'}
+                        ,{field: 'sale',title: '本月业绩/元'}
                         ,{title:'操作', toolbar: '#barDemo' }
                     ]
                 ]
@@ -111,7 +112,7 @@
                 var username = data.field.username;
                 table.render({
                     elem: '#table'
-                    ,url: '/user/findUserByFuzzyUserName' //数据接口
+                    ,url: '/user/findUserByFuzzyUsername' //数据接口
                     ,page: true //开启分页
                     ,where:{
                         "username":username

@@ -60,6 +60,15 @@
                   11位数字
               </div>
           </div>
+        <div class="layui-form-item">
+            <label for="L_nickname" class="layui-form-label">
+                <span class="x-red">*</span>部门
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_depatment" th:value="${sysUser.depatment}" name="depatment" required="" lay-verify="nickname" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
           <div class="layui-form-item">
               <label for="L_email" class="layui-form-label">
                   <span class="x-red">*</span>邮件

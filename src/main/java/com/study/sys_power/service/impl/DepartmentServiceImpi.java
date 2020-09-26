@@ -13,8 +13,10 @@ public class DepartmentServiceImpi implements DepartmentService {
     @Autowired
     private DepartmentDao departmentDao;
     @Override
-    public Results<SysUser> getAllUsersByPage(Integer offset, Integer limit,Integer branch) {
+    public Results<SysUser> getAllUsersByPage(Integer offset, Integer limit,String branch) {
         //count user-list
         return Results.success(departmentDao.countAllUsers().intValue(), departmentDao.getAllUsersByPage(offset, limit,branch));
     }
+
+
 }

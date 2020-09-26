@@ -19,18 +19,10 @@
 
         <div class="layui-fluid">
             <div class="layui-row  layui-col-space15">
-                <div class="layui-col-md12">
-                    <div class="layui-card">
-                        <div class="layui-card-body ">
-                            <form class="layui-form  layui-col-space5">
-                                <div class="layui-inline layui-show-xs-block">
-                                    <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
-                                </div>
-                                <div class="layui-inline layui-show-xs-block">
-                                    <button class="layui-btn"  lay-submit="" lay-filter="search"><i class="layui-icon">&#xe615;</i></button>
-                                </div>
-                            </form>
-                        </div>
+                </br>
+                </br>
+                </br>
+                </br>
 
                         <div class="layui-card-header">
                             <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
@@ -52,7 +44,8 @@
             </div>
         </div>
     </body>
-    <script>
+    <script type="text/javascript" th:inline="javascript">
+
         layui.use('table', function(){
             var table = layui.table,
                 form = layui.form;
@@ -71,6 +64,7 @@
                         ,{field: 'id', title: 'ID', align:'center', width:50}
                         ,{field: 'username', title: '用户名'}
                         ,{field: 'telephone', title: '手机'}
+                        ,{field: 'depatment', title: '部门'}
                         ,{field: 'status', title: '状态',  templet:function(d){
                             return  d.status == '1' ? "启动":"禁用";
                         }}
@@ -104,39 +98,6 @@
                 } else if(obj.event === 'edit'){
                     xadmin.open('编辑用户信息','/user/edit/?id='+data.id);
                 }
-            });
-
-
-            //搜索
-            form.on('submit(search)', function(data){
-                var username = data.field.username;
-                table.render({
-                    elem: '#table'
-                    ,url: '/user/findUserByFuzzyUserName' //数据接口
-                    ,page: true //开启分页
-                    ,where:{
-                        "username":username
-                    }
-                    ,response: {
-
-                        countName: 'count', //规定数据总数的字段名称，默认：count
-                        dataName: 'datas' //规定数据列表的字段名称，默认：data
-                    }
-                    ,cols: [
-                        [ //表头
-                            {type: 'checkbox', fixed: 'left'}
-                            ,{field: 'id', title: 'ID', align:'center', width:50}
-                            ,{field: 'username', title: '用户名'}
-                            ,{field: 'telephone', title: '手机'}
-                            ,{field: 'status', title: '状态',  templet:function(d){
-                                return  d.status == '1' ? "启动":"禁用";
-                            }}
-                            ,{field: 'birthday', title: '生日'}
-                            ,{title:'操作', toolbar: '#barDemo' }
-                        ]
-                    ]
-                });
-                return false;
             });
 
         });

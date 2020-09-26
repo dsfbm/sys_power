@@ -11,6 +11,12 @@
 			<if test="nickname != null">
 				nickname = #{nickname},
 			</if>
+			<if test="depatment != null">
+				depatment = #{depatment},
+			</if>
+			<if test="sale != null">
+				sale = #{sale},
+			</if>
 			<if test="headImgUrl != null">
 				headImgUrl = #{headImgUrl},
 			</if>

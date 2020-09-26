@@ -6,5 +6,5 @@ import lombok.Data;
 public class SysUserMap {
     private int id;
     private String username;
-    private  int sale;
+    private int sale;
 }

@@ -13,6 +13,7 @@ public class SysUser extends BaseEntity<Long> {
 	private String username;
 	private String password;
 	private String nickname;
+	private String depatment;
 	private String headImgUrl;
 	private String phone;
 	private String telephone;
@@ -22,6 +23,7 @@ public class SysUser extends BaseEntity<Long> {
 	private Integer sex;
 	private Integer status;
 	private String intro;
+	private String sale;
 
 	public interface Status {
 		int DISABLED = 0;

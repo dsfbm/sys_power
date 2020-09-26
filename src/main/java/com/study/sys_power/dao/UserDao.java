@@ -21,7 +21,7 @@ public interface UserDao {
 	Long countAllUsers();
 
 	@Options(useGeneratedKeys = true, keyProperty = "id")
-	@Insert("insert into sys_user(username, password, nickname, headImgUrl, phone, telephone, email, birthday, sex, status, createTime, updateTime) values(#{username}, #{password}, #{nickname}, #{headImgUrl}, #{phone}, #{telephone}, #{email}, #{birthday}, #{sex}, #{status}, now(), now())")
+	@Insert("insert into sys_user(username, password, nickname, depatment, headImgUrl, phone, telephone, email, birthday, sex, status, createTime, updateTime) values(#{username}, #{password}, #{nickname}, #{depatment},#{headImgUrl}, #{phone}, #{telephone}, #{email}, #{birthday}, #{sex}, #{status}, now(), now())")
 	int save(SysUser user);
 
 	@Select("select * from sys_user t where t.telephone = #{telephone}")

@@ -19,19 +19,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Data
 @Slf4j
 public class DepartmentController {
-    private Integer branch;
+    private String branch;
     @Autowired
     private DepartmentService departmentService;
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/list")
     @ResponseBody
-    public Results<SysUser> getUsers(PageTableRequest request,Integer branch) {
+    public Results<SysUser> getUsers(PageTableRequest request,String branch) {
         log.info("UserController.getUsers(): param ( request1 = " + request +" )");
         branch=this.branch;
         request.countOffset();
         return departmentService.getAllUsersByPage(request.getOffset(), request.getLimit(),branch);
     }
-
-
+    @GetMapping("/findUserByFuzzyUsername")
+    @ResponseBody
+    public Results<SysUser> findUserByFuzzyUsername(PageTableRequest request, String username) {
+        log.info("UserController.findUserByFuzzyUsername(): param ( request1 = " + request +" ,username = " + username+ ")");
+        request.countOffset();
+        return userService.getUserByFuzzyUsername(username, request.getOffset(), request.getLimit());
+    }
 
 }
