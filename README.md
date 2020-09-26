@@ -13,7 +13,7 @@
 ![image](image/QQ截图20200926170153.png)
 ## 登录页面
 ![image](image/QQ截图20200926162910.png)
-## 主页面
+## 后台展示
 ![image](/image/QQ截图20200926162931.png)
 ![image](/image/QQ截图20200926162944.png)
 ![image](/image/QQ截图20200926162959.png)
